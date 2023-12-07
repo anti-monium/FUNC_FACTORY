@@ -132,9 +132,8 @@ FunctionComposition operator/(AbstractFunction &lfunc, TFunction &rfunc) {
 template <typename TFunction>
 double FindRoot(TFunction &f, double x, int it, double lambda) {
     for (; it > 0; --it) {
-        x = x - lambda * (f * f).GetDeriative(x);
+        x = x - lambda * f(x) * (f).GetDeriative(x);
     }
     return x;
 }
-
 #endif 
